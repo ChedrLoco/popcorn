@@ -2,12 +2,15 @@ package com.chyld.services;
 
 import com.chyld.entities.Movie;
 import com.chyld.entities.Studio;
+import com.chyld.enums.Rating;
 import com.chyld.repositories.IMovieRepository;
 import com.chyld.repositories.IStudioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MovieService {
@@ -21,6 +24,14 @@ public class MovieService {
     public Page<Movie> findAll(int page) {
         PageRequest pr = new PageRequest(page, 3);
         return this.repository.findAll(pr);
+    }
+
+    public Movie findByName(String name) {
+        return this.repository.findByName(name);
+    }
+
+    public List<Movie> findByRatingOrderByReleasedDesc(Rating rating) {
+        return this.repository.findByRatingOrderByReleasedDesc(rating);
     }
 
     public Movie findOne(int id) {
