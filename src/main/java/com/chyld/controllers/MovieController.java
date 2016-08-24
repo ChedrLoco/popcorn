@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/studios")
+@RequestMapping("/movies")
 public class MovieController {
     private MovieService service;
 

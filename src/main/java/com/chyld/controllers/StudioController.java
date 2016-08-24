@@ -1,5 +1,6 @@
 package com.chyld.controllers;
 
+import com.chyld.entities.Movie;
 import com.chyld.entities.Studio;
 import com.chyld.services.StudioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,11 @@ public class StudioController {
     @RequestMapping(path = {"", "/"}, method = RequestMethod.GET)
     public Page<Studio> index(@RequestParam(name = "page", required = false, defaultValue = "0") int page) {
         return this.service.findAll(page);
+    }
+
+    @RequestMapping(path = {"/{id}/movies"}, method = RequestMethod.GET)
+    public Page<Movie> movies(@PathVariable int id, @RequestParam(name = "page", required = false, defaultValue = "0") int page) {
+        return this.service.findAllMoviesByStudioId(id, page);
     }
 
     @RequestMapping(path = {"/{id}"}, method = RequestMethod.GET)

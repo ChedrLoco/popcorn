@@ -53,7 +53,7 @@ public class Movie {
     public Rating getRating() {return rating;}
     public void setRating(Rating rating) {this.rating = rating;}
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "studio_id")
     public Studio getStudio() {return studio;}
     public void setStudio(Studio studio) {this.studio = studio;}
