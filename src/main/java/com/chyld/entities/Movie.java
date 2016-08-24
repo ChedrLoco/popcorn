@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "movies")
@@ -18,6 +19,7 @@ public class Movie {
     private Genre genre;
     private Rating rating;
     private Studio studio;
+    private List<Actor> actors;
     private Date createdAt;
     private Date updatedAt;
 
@@ -57,6 +59,13 @@ public class Movie {
     @JoinColumn(name = "studio_id")
     public Studio getStudio() {return studio;}
     public void setStudio(Studio studio) {this.studio = studio;}
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "actors_movies",
+            joinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_id", referencedColumnName = "id"))
+    public List<Actor> getActors() {return actors;}
+    public void setActors(List<Actor> actors) {this.actors = actors;}
 
     @Column(name = "created_at", nullable = false, updatable = false)
     public Date getCreatedAt() {return createdAt;}
