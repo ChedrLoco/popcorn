@@ -25,6 +25,16 @@ public class ActorService {
         return this.repository.findAll(pr);
     }
 
+    public Page<Movie> findAllMoviesByActorId(int id, int page) {
+        PageRequest pr = new PageRequest(page, 3);
+        return this.repository.findAllMoviesByActorId(id, pr);
+    }
+
+    public Page<Studio> findAllStudiosByActorId(int id, int page) {
+        PageRequest pr = new PageRequest(page, 3);
+        return this.repository.findAllStudiosByActorId(id, pr);
+    }
+
     public Actor findOne(int id) {
         return this.repository.findOne(id);
     }

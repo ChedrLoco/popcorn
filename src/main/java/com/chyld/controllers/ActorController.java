@@ -26,6 +26,16 @@ public class ActorController {
         return this.service.findAll(page);
     }
 
+    @RequestMapping(path = {"/{id}/movies"}, method = RequestMethod.GET)
+    public Page<Movie> movies(@PathVariable int id, @RequestParam(name = "page", required = false, defaultValue = "0") int page) {
+        return this.service.findAllMoviesByActorId(id, page);
+    }
+
+    @RequestMapping(path = {"/{id}/studios"}, method = RequestMethod.GET)
+    public Page<Studio> studios(@PathVariable int id, @RequestParam(name = "page", required = false, defaultValue = "0") int page) {
+        return this.service.findAllStudiosByActorId(id, page);
+    }
+
     @RequestMapping(path = {"/{id}"}, method = RequestMethod.GET)
     public Actor show(@PathVariable int id) {
         return this.service.findOne(id);

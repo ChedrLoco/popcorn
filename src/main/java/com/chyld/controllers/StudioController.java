@@ -1,5 +1,6 @@
 package com.chyld.controllers;
 
+import com.chyld.entities.Actor;
 import com.chyld.entities.Movie;
 import com.chyld.entities.Studio;
 import com.chyld.services.StudioService;
@@ -26,6 +27,11 @@ public class StudioController {
     @RequestMapping(path = {"/{id}/movies"}, method = RequestMethod.GET)
     public Page<Movie> movies(@PathVariable int id, @RequestParam(name = "page", required = false, defaultValue = "0") int page) {
         return this.service.findAllMoviesByStudioId(id, page);
+    }
+
+    @RequestMapping(path = {"/{id}/actors"}, method = RequestMethod.GET)
+    public Page<Actor> actors(@PathVariable int id, @RequestParam(name = "page", required = false, defaultValue = "0") int page) {
+        return this.service.findAllActorsByStudioId(id, page);
     }
 
     @RequestMapping(path = {"/{id}"}, method = RequestMethod.GET)

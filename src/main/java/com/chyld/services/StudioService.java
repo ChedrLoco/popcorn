@@ -1,5 +1,6 @@
 package com.chyld.services;
 
+import com.chyld.entities.Actor;
 import com.chyld.entities.Movie;
 import com.chyld.entities.Studio;
 import com.chyld.repositories.IStudioRepository;
@@ -25,6 +26,11 @@ public class StudioService {
     public Page<Movie> findAllMoviesByStudioId(int id, int page) {
         PageRequest pr = new PageRequest(page, 3);
         return this.repository.findAllMoviesByStudioId(id, pr);
+    }
+
+    public Page<Actor> findAllActorsByStudioId(int id, int page) {
+        PageRequest pr = new PageRequest(page, 3);
+        return this.repository.findAllActorsByStudioId(id, pr);
     }
 
     public Studio findOne(int id) {
